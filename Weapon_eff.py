@@ -134,9 +134,9 @@ diff = damage_B - damage_A
 efficiency = (damage_B / damage_A - 1) * 100 if damage_A != 0 else 0
 
 if diff > 0:
-    st.success(f"무기 B가 {diff:,.2f} 만큼 강력하며, 효율은 {efficiency:.2f}% 더 좋습니다.")
+    st.success(f"무기 B가 {diff:,.0f} 데미지만큼 강력하며, 효율은 {efficiency:.2f}% 더 좋습니다.")
 elif diff < 0:
-    st.error(f"무기 A가 {-diff:,.2f} 만큼 강력하며, 효율은 {-efficiency:.2f}% 더 좋습니다.")
+    st.error(f"무기 A가 {-diff:,.0f} 데미지만큼 강력하며, 효율은 {-efficiency:.2f}% 더 좋습니다.")
 else:
     st.info("무기 A와 B의 최종 데미지가 동일합니다.")
 
