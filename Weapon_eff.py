@@ -51,7 +51,7 @@ st.subheader("무기 A")
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    wep_atk_A_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=10.0, format="%.0f", key="wep_atk_A")
+    wep_atk_A_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=1.0, format="%.0f", key="wep_atk_A")
 with col2:
     wep_atk_A_input = st.number_input("직접 입력 (적용 값)", min_value=200.0, max_value=390.0, value=wep_atk_A_slider, step=1.0, format="%.0f", key="wep_atk_A_w")
 wep_atk_A = wep_atk_A_input
@@ -88,7 +88,7 @@ st.subheader("무기 B")
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    wep_atk_B_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=10.0, format="%.0f", key="wep_atk_B")
+    wep_atk_B_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=1.0, format="%.0f", key="wep_atk_B")
 with col2:
     wep_atk_B_input = st.number_input("직접 입력 (적용 값)", min_value=200.0, max_value=390.0, value=wep_atk_B_slider, step=1.0, format="%.0f", key="wep_atk_B_w")
 wep_atk_B = wep_atk_B_input
