@@ -117,7 +117,7 @@ with col2:
     
 dmg_B = dmg_B_input
 
-st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(1+(atk_bonus+atk_per+wepA_ak)*0.01):.0f}")
+st.write(f"관리실 공격력: {(atk_origin+wep_atk_B)*(1+(atk_bonus+atk_per+wepB_ak)*0.01):.0f}")
 
 
 # 결과 계산
