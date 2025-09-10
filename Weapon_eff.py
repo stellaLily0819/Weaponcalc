@@ -23,16 +23,13 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-atk_choice = st.radio(
-    "무기 옵션",
-    options=[15, 25],
-    format_func=lambda x:{
-        15: "공격 보너스 15%",
-        25: "치명 피해 25%"    
-    }
-    [ak, ct],
-    horizontal=True
-)
+col1, col2 = st.columns(3)
+with col1:
+    ak = st.toggle("공격 보너스 15%", key="preset1")
+with col2:
+    ct = st.toggle("치명타 피해 25%", key="preset2")
+wep_ak = 15 if ak else 0
+wep_ct = 25 if ct else 0
     
 col1, col2 = st.columns([2, 1])
 with col1:
