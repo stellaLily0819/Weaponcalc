@@ -23,13 +23,18 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
+if "active" not in st.session_state:
+    st.session_state.active = None
+    
 col1, col2 = st.columns(2)
 with col1:
-    ak = st.toggle("공격 보너스 15%", key="preset1")
+    if st.toggle("공격 보너스 15%", key="preset1", value=st.session_state.active == "A")
+        st.session_state.active = "A"
 with col2:
-    ct = st.toggle("치명타 피해 25%", key="preset2")
-wep_ak = 15 if ak else 0
-wep_ct = 25 if ct else 0
+    if st.toggle("치명타 피해 25%", key="preset2", value=st.session_state.active == "B")
+        st.session_state.active = "B"
+wep_ak = 15 if st.session_state.active == "A" else 0
+wep_ct = 25 if st.session_state.active == "B" else 0
     
 col1, col2 = st.columns([2, 1])
 with col1:
