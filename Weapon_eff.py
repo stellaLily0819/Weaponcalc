@@ -23,15 +23,11 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-if new_A and st.session_state.A_ct:
-    st.session_state.A_ct = False
-    st.session_state.active = "A"
-st.session_state.A_ak = new_A
-
-if new_B and st.session_state.A_ak:
+if "A_ak" not in st.session_state:
     st.session_state.A_ak = False
-    st.session_state.active = "B"
-st.session_state.A_ct = new_B
+    
+if "A_ct" not in st.session_state:
+    st.session_state.A_ct = False
     
 col1, col2 = st.columns(2)
 with col1:
@@ -44,6 +40,17 @@ with col2:
     if new_B and st.session_state.A_ak:  # 무기 A가 켜져 있으면 끔
         st.session_state.A_ak = False
     st.session_state.A_ct = new_B
+
+if new_A and st.session_state.A_ct:
+    st.session_state.A_ct = False
+    st.session_state.active = "A"
+st.session_state.A_ak = new_A
+
+if new_B and st.session_state.A_ak:
+    st.session_state.A_ak = False
+    st.session_state.active = "B"
+st.session_state.A_ct = new_B
+
 wep_ak = 15 if st.session_state.A_ak else 0
 wep_ct = 25 if st.session_state.A_ct else 0
     
