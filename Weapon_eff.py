@@ -22,13 +22,26 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 
 # 무기 A
 st.subheader("무기 A")
+# 토글 3개
+preset1 = st.toggle("Preset ① (ATK=1000)", key="preset1")
+preset2 = st.toggle("Preset ② (ATK=2000)", key="preset2")
+preset3 = st.toggle("Preset ③ (ATK=3000)", key="preset3")
+# 선택된 토글에 맞춰 ATK 값 적용
+atk_A = 0
+if preset1:
+    atk_A = 1000
+if preset2:
+    atk_A = 2000
+if preset3:
+    atk_A = 3000
+    
 col1, col2 = st.columns([2, 1])
 with col1:
-    atk_A_slider = st.slider("공격력 (정비실 기준)", 1000, 9000, 3000, step=100)
+    atk_A_slider = st.slider("공격력", 1000, 9000, 3000, step=100)
 with col2:
     atk_A_input = st.number_input("직접 입력 (우선값)", min_value=1000, max_value=9000, value=atk_A_slider, step=1)
 atk_A = atk_A_input
-sk_A = st.number_input("스킬 계수 (sk_coef_A, %)", min_value=1.0, value=100.0)
+sk_A = st.number_input("피증 계수 (sk_coef_A, %)", min_value=0.0, value=0.0, step=10.0, format="%.0f")
 
 # 무기 B
 st.subheader("무기 B")
