@@ -47,7 +47,7 @@ elif choice_doll == "불워크":
     ct_per = 0.0
 
 # 무기 A
-st.subheader("무기 A (비교 할 무기)")
+st.subheader("무기 A")
 
 col1, col2 = st.columns([2, 1])
 with col1:
@@ -84,7 +84,7 @@ st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(1+(atk_bonus+atk_per+we
 
 
 # 무기 B
-st.subheader("무기 B (전용 무기)")
+st.subheader("무기 B")
 
 col1, col2 = st.columns([2, 1])
 with col1:
