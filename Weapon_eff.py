@@ -144,7 +144,7 @@ else:
     st.info("무기 A와 B의 최종 데미지가 동일합니다.")
 
 # 그래프: 데미지 곡선 + 효율(%) 곡선
-atk_range1 = np.linspace(0, 8000, 200)
+atk_range = np.linspace(0, 8000, 200)
 damage_curve_A = [
     compute_z(final_dmg_A, final_ct_A, atk, E_def, total_def_A, Weak_coef, sk_coef)
     for atk in atk_range
