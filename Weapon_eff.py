@@ -42,7 +42,7 @@ elif choice_doll == "서포트":
 elif choice_doll == "불워크":
     atk_per = 0.0
     ct_per = 0.0
-
+st.markdown("---")
 # 무기 A
 st.subheader("무기 A")
 
@@ -78,7 +78,7 @@ dmg_A = dmg_A_input
 
 st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(1+(atk_bonus+atk_per+wepA_ak)*0.01):.0f}")
 
-
+st.markdown("---")
 
 # 무기 B
 st.subheader("무기 B")
