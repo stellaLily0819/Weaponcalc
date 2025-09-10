@@ -97,8 +97,8 @@ else:
 
 # 📈 그래프: 데미지 곡선 + 효율(%) 곡선
 atk_range = np.linspace(100, 5000, 200)
-damage_curve_A = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef]
-damage_curve_B = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef]
+damage_curve_A = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)]
+damage_curve_B = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)]
 efficiency_curve = [(b/a - 1) * 100 if a != 0 else 0 for a, b in zip(damage_curve_A, damage_curve_B)]
 
 fig, ax1 = plt.subplots(figsize=(9,6))
