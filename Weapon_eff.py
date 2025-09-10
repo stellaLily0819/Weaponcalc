@@ -107,6 +107,9 @@ damage_curve_B = [compute_z(final_dmg_B, final_ct_B, atk_origin, E_def, total_de
 efficiency_curve = [(b/a - 1) * 100 if a != 0 else 0 for a, b in zip(damage_curve_A, damage_curve_B)]
 
 fig, ax1 = plt.subplots(figsize=(9,6))
+st.write(f"atk_range 길이: {len(atk_range)}")
+st.write(f"damage_curve_A 길이: {len(damage_curve_A)}")
+st.write(f"damage_curve_B 길이: {len(damage_curve_B)}")
 
 # 데미지 곡선 (왼쪽 y축)
 ax1.plot(atk_range, damage_curve_A, label="무기 A 데미지", color="blue")
