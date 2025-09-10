@@ -13,7 +13,7 @@ st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
 E_def = st.sidebar.number_input("적 방어력", min_value=0.0, value=5000.0, max_value=20000.0, step=100.0, format="%.0f")
-atk_origin = st.sidebar.number_input("기본 공격력", min_value=2000.0, max_value=5000.0, value=3500.0, step=10.0, format="%.0f")
+atk_origin = st.sidebar.number_input("기초 공격력", min_value=2000.0, max_value=5000.0, value=3500.0, step=10.0, format="%.0f")
 def_coef = st.sidebar.number_input("방어 무시(%)", min_value=0.0, max_value=100.0, value=30.0, step=10.0, format="%.0f")
 Weak_coef = st.sidebar.number_input("약점 (개)", min_value=0.0, max_value=2.0, value=0.0, step=1.0, format="%.0f")
 sk_coef = st.sidebar.number_input("스킬 계수(%)", min_value=0.0, max_value=1500.0, value=100.0, step=10.0, format="%.0f")
@@ -41,9 +41,9 @@ elif choice == "치명타 피해 25%":
     
 col1, col2 = st.columns([2, 1])
 with col1:
-    atk_A_slider = st.slider("공격력", 1000, 9000, 3000, step=100)
+    atk_A_slider = st.slider("피해 증가 계수", 1000.0, 9000.0, 3000.0, step=100.0, format="%.0f")
 with col2:
-    atk_A_input = st.number_input("직접 입력 (우선값)", min_value=1000, max_value=9000, value=atk_A_slider, step=1)
+    atk_A_input = st.number_input("직접 입력 (우선값)", min_value=1000.0, max_value=9000.0, value=atk_A_slider, step=10.0, format="%.0f")
 atk_A = atk_A_input
 sk_A = st.number_input("피증 계수 (sk_coef_A, %)", min_value=0.0, value=0.0, step=10.0, format="%.0f")
 
