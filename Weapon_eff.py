@@ -116,6 +116,7 @@ dmg_B = dmg_B_input
 
 st.write(f"관리실 공격력: {(atk_origin+wep_atk_B)*(1+(atk_bonus+atk_per+wepB_ak)*0.01):.0f}")
 
+st.markdown("---")
 
 # 결과 계산
 final_dmg_A = buff_x + dmg_A
