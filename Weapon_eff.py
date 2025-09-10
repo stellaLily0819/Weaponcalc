@@ -29,7 +29,7 @@ wepA_ct = 0
 choice_A = st.radio(
     "무기 옵션",
     options=["공격 보너스 15%", "치명타 피해 25%"],
-    horizontal=True
+    horizontal=True,
     key="weaponA_option"
 )
 if choice_A == "공격 보너스 15%":
@@ -58,7 +58,7 @@ wepB_ct = 0
 choice_B = st.radio(
     "무기 옵션",
     options=["공격 보너스 15%", "치명타 피해 25%"],
-    horizontal=True
+    horizontal=True,
     key="weaponB_option"
 )
 if choice_B == "공격 보너스 15%":
