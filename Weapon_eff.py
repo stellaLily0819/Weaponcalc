@@ -28,10 +28,10 @@ if "active" not in st.session_state:
     
 col1, col2 = st.columns(2)
 with col1:
-    if st.toggle("공격 보너스 15%", key="preset1", value=st.session_state.active == "A"):
+    if st.toggle("공격 보너스 15%", key="wep_ak", value=st.session_state.active == "A"):
         st.session_state.active = "A"
 with col2:
-    if st.toggle("치명타 피해 25%", key="preset2", value=st.session_state.active == "B"):
+    if st.toggle("치명타 피해 25%", key="wep_ct", value=st.session_state.active == "B"):
         st.session_state.active = "B"
 wep_ak = 15 if st.session_state.active == "A" else 0
 wep_ct = 25 if st.session_state.active == "B" else 0
