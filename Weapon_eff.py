@@ -145,6 +145,11 @@ else:
 
 
 st.write("피증 변화만을 고려한 데미지 변화 (세로선 - 무기 포함 최종 데미지)")
+st.markdown(f"""
+**참고:**  
+- 파란 점선 = 무기 A 현재 공격력 ({final_atk_A:.0f})  
+- 빨간 점선 = 무기 B 현재 공격력 ({final_atk_B:.0f})  
+""")
 # 그래프: 데미지 곡선 + 효율(%) 곡선
 atk_range = np.linspace(0, 8000, 200)
 damage_curve_A = [
@@ -165,6 +170,8 @@ ax1.plot(atk_range, damage_curve_A, label="Weapon A", color="blue")
 ax1.plot(atk_range, damage_curve_B, label="Weapon B", color="red")
 ax1.axvline(final_atk_A, color="blue", linestyle=":")
 ax1.axvline(final_atk_B, color="red", linestyle=":")
+ax1.text(final_atk_A, max(damage_curve_A), "weapon A ATK", color="blue", ha="center", va="bottom")
+ax1.text(final_atk_B, max(damage_curve_B), "weapon B ATK", color="red", ha="center", va="bottom")
 ax1.set_xlabel("ATK")
 ax1.set_ylabel("Final Damage")
 ax1.legend(loc="upper left")
