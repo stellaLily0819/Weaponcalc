@@ -27,7 +27,7 @@ with col1:
     atk_A_slider = st.slider("공격력 (ATK_A)", 1000, 9000, 3000, step=50)
 with col2:
     atk_A_input = st.number_input("직접 입력 (ATK_A)", min_value=1000, max_value=9000, value=atk_A_slider, step=1)
-    
+atk_A = atk_A_input
 sk_A = st.number_input("스킬 계수 (sk_coef_A, %)", min_value=1.0, value=100.0)
 
 # 무기 B
