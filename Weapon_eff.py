@@ -23,36 +23,20 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-if "A_ak" not in st.session_state:
-    st.session_state.A_ak = False
-    
-if "A_ct" not in st.session_state:
-    st.session_state.A_ct = False
-    
-col1, col2 = st.columns(2)
-with col1:
-    new_A = st.toggle("공격 보너스 15%", value=st.session_state.A_ak, key="A_ak_togg")
-    if new_A and st.session_state.A_ct:  # 무기 B가 켜져 있으면 끔
-        st.session_state.A_ct = False
-    st.session_state.A_ak = new_A
-with col2:
-    new_B = st.toggle("치명타 피해 25%", value=st.session_state.A_ct, key="A_ct_togg")
-    if new_B and st.session_state.A_ak:  # 무기 A가 켜져 있으면 끔
-        st.session_state.A_ak = False
-    st.session_state.A_ct = new_B
+wep_ak = False
+wep_ct = False
 
-if new_A and st.session_state.A_ct:
-    st.session_state.A_ct = False
-    st.session_state.active = "A"
-st.session_state.A_ak = new_A
 
-if new_B and st.session_state.A_ak:
-    st.session_state.A_ak = False
-    st.session_state.active = "B"
-st.session_state.A_ct = new_B
+choice = st.radio(
+    "무기 옵션",
+    options=["공격 보너스 15%", "치명타 피해 25%"],
+    horizontal=True
+)
 
-wep_ak = 15 if st.session_state.A_ak else 0
-wep_ct = 25 if st.session_state.A_ct else 0
+if choice == "공격 보너스 15%":
+    atk_ak = 15
+elif choice == "치명타 피해 25%":
+    atk_ct = 25
     
 col1, col2 = st.columns([2, 1])
 with col1:
