@@ -27,7 +27,7 @@ atk_choice = st.radio(
     "무기 옵션",
     options=[15, 25],
     format_func=lambda x:{
-        15: "공격 보너스 15%"
+        15: "공격 보너스 15%",
         25: "치명 피해 25%"    
     }
     [ak, ct],
