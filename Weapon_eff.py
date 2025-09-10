@@ -44,7 +44,7 @@ col1, col2 = st.columns([2, 1])
 with col1:
     dmg_A_slider = st.slider("피증 계수 (합산)", 0.0, 600.0, 10.0, step=10.0, format="%.0f", key="dmg_buff_A")
 with col2:
-    dmg_A_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_A_slider, step=10.0, format="%.0f" key="dmg_buff_A_w")
+    dmg_A_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_A_slider, step=10.0, format="%.0f", key="dmg_buff_A_w")
     
 dmg_A = dmg_A_input
 
@@ -66,7 +66,7 @@ if choice_B == "공격 보너스 15%":
 elif choice_B == "치명타 피해 25%":
     wepB_ct = 25
 
-def_B = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f", key="def_ignore_A")
+def_B = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f", key="def_ignore_B")
 total_def_B = min(def_B + def_coef, 100)
 
 col1, col2 = st.columns([2, 1])
