@@ -23,10 +23,15 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-if "A_ak" not in st.session_state:
-    st.session_state.A_ak = False
-if "A_ct" not in st.session_state:
+if new_A and st.session_state.A_ct:
     st.session_state.A_ct = False
+    st.session_state.active = "A"
+st.session_state.A_ak = new_A
+
+if new_B and st.session_state.A_ak:
+    st.session_state.A_ak = False
+    st.session_state.active = "B"
+st.session_state.A_ct = new_B
     
 col1, col2 = st.columns(2)
 with col1:
