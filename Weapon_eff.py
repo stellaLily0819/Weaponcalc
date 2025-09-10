@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def compute_z(buff_x, buff_y, atk, E_def, def_coef, Weak_coef, sk_coef):
     numer = atk ** 2
     denomi = atk + E_def * (1 - def_coef * 0.01)
-    return (numer / denomi) * (1 + buff_x * 0.01) * Weak_coef * (sk_coef * 0.01) * (buff_y * 0.01)
+    return (numer / denomi) * (1 + buff_x * 0.01) * (1+Weak_coef*0.1) * (sk_coef * 0.01) * (buff_y * 0.01)
 
 st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 
@@ -21,12 +21,17 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 
 
 # 무기 A
-st.subheader("무기 A 입력")
-atk_A = st.slider("공격력 (ATK_A)", 100, 5000, 1000)
+st.subheader("무기 A")
+col1, col2 = st.columns([2, 1])
+with col1:
+    atk_A_slider = st.slider("공격력 (ATK_A)", 1000, 9000, 3000, step=50)
+with col2:
+    atk_A_input = st.number_input("직접 입력 (ATK_A)", min_value=1000, max_value=9000, value=atk_A_slider, step=1)
+    
 sk_A = st.number_input("스킬 계수 (sk_coef_A, %)", min_value=1.0, value=100.0)
 
 # 무기 B
-st.subheader("무기 B 입력")
+st.subheader("무기 B")
 atk_B = st.slider("공격력 (ATK_B)", 100, 5000, 1200)
 sk_B = st.number_input("스킬 계수 (sk_coef_B, %)", min_value=1.0, value=100.0)
 
