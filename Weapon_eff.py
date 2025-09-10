@@ -23,7 +23,7 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-col1, col2 = st.columns(3)
+col1, col2 = st.columns(2)
 with col1:
     ak = st.toggle("공격 보너스 15%", key="preset1")
 with col2:
