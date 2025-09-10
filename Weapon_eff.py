@@ -46,7 +46,7 @@ elif choice_doll == "불워크":
     atk_per = 0.0
     ct_per = 0.0
 
-st.write(f"관리실 공격력: {atk_origin*(atk_bonus+atk_per)*0.01}")
+st.write(f"관리실 공격력: {atk_origin*(atk_bonus+atk_per)*0.01:.0f}")
 
 # 무기 A
 st.subheader("무기 A")
