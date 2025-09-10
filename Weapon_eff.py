@@ -22,18 +22,14 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 
 # 무기 A
 st.subheader("무기 A")
-# 토글 3개
-preset1 = st.toggle("Preset ① (ATK=1000)", key="preset1")
-preset2 = st.toggle("Preset ② (ATK=2000)", key="preset2")
-preset3 = st.toggle("Preset ③ (ATK=3000)", key="preset3")
-# 선택된 토글에 맞춰 ATK 값 적용
-atk_A = 0
-if preset1:
-    atk_A = 1000
-if preset2:
-    atk_A = 2000
-if preset3:
-    atk_A = 3000
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    preset1 = st.toggle("Preset ① (1000)", key="preset1")
+with col2:
+    preset2 = st.toggle("Preset ② (2000)", key="preset2")
+with col3:
+    preset3 = st.toggle("Preset ③ (3000)", key="preset3")
     
 col1, col2 = st.columns([2, 1])
 with col1:
