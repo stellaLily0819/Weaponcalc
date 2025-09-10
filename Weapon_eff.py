@@ -25,9 +25,13 @@ st.subheader("무기 A")
 
 atk_choice = st.radio(
     "무기 옵션",
-    options=[1000, 2000, 3000],
-    format_func=lambda x: f"Preset ({x})",
-    horizontal=True  # 가로 배치
+    options=[15, 25],
+    format_func=lambda x:{
+        15: "공격 보너스 15%"
+        25: "치명 피해 25%"    
+    }
+    [ak, ct],
+    horizontal=True
 )
     
 col1, col2 = st.columns([2, 1])
