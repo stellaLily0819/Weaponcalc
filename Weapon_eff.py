@@ -8,7 +8,7 @@ def compute_z(buff_x, buff_y, atk, E_def, def_coef, Weak_coef, sk_coef):
     denomi = atk + E_def * (1 - def_coef * 0.01)
     return (numer / denomi) * (1 + buff_x * 0.01) * (1+Weak_coef*0.1) * (sk_coef * 0.01) * (buff_y * 0.01)
 
-st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
+st.title("무기 효율 계산기")
 
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
