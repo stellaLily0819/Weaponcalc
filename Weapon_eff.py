@@ -24,37 +24,60 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, max_value=50
 # 무기 A
 st.subheader("무기 A")
 
-wep_ak = False
-wep_ct = False
-
-
+wepA_ak = 0
+wepA_ct = 0
 choice = st.radio(
     "무기 옵션",
     options=["공격 보너스 15%", "치명타 피해 25%"],
     horizontal=True
 )
-
 if choice == "공격 보너스 15%":
-    atk_ak = 15
+    wepA_ak = 15
 elif choice == "치명타 피해 25%":
-    atk_ct = 25
-    
+    wepA_ct = 25
+
+def_A = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f")
+total_def_A = min(def_A + def_coef, 100)
+
 col1, col2 = st.columns([2, 1])
 with col1:
-    atk_A_slider = st.slider("피해 증가 계수", 1000.0, 9000.0, 3000.0, step=100.0, format="%.0f")
+    dmg_A_slider = st.slider("피증 계수 (합산)", 0.0, 600.0, 10.0, step=10.0, format="%.0f")
 with col2:
-    atk_A_input = st.number_input("직접 입력 (우선값)", min_value=1000.0, max_value=9000.0, value=atk_A_slider, step=10.0, format="%.0f")
-atk_A = atk_A_input
-sk_A = st.number_input("피증 계수 (sk_coef_A, %)", min_value=0.0, value=0.0, step=10.0, format="%.0f")
+    dmg_A_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_A_slider, step=10.0, format="%.0f")
+    
+dmg_A = dmg_A_input
+
+
 
 # 무기 B
 st.subheader("무기 B")
-atk_B = st.slider("공격력 (ATK_B)", 100, 5000, 1200)
-sk_B = st.number_input("스킬 계수 (sk_coef_B, %)", min_value=1.0, value=100.0)
+
+wepB_ak = 0
+wepB_ct = 0
+choice = st.radio(
+    "무기 옵션",
+    options=["공격 보너스 15%", "치명타 피해 25%"],
+    horizontal=True
+)
+if choice == "공격 보너스 15%":
+    wepB_ak = 15
+elif choice == "치명타 피해 25%":
+    wepB_ct = 25
+
+def_B = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f")
+total_def_B = min(def_B + def_coef, 100)
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    dmg_B_slider = st.slider("피증 계수 (합산)", 0.0, 600.0, 10.0, step=10.0, format="%.0f")
+with col2:
+    dmg_B_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_B_slider, step=10.0, format="%.0f")
+    
+dmg_B = dmg_B_input
 
 # 결과 계산
-damage_A = compute_z(buff_x, buff_y, atk_A, E_def, def_coef, Weak_coef, sk_A)
-damage_B = compute_z(buff_x, buff_y, atk_B, E_def, def_coef, Weak_coef, sk_B)
+damage_A = compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_A, E_def, total_def_A, Weak_coef, sk_A)
+damage_B = compute_z(buff_x + dmg_B, buff_y + wepB_ct, atk_B, E_def, total_def_B, Weak_coef, sk_B)
 
 diff = damage_B - damage_A
 efficiency = (damage_B / damage_A - 1) * 100 if damage_A != 0 else 0
