@@ -77,9 +77,14 @@ with col2:
     
 dmg_B = dmg_B_input
 
+
 # 결과 계산
-damage_A = compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)
-damage_B = compute_z(buff_x + dmg_B, buff_y + wepB_ct, atk_origin, E_def, total_def_B, Weak_coef, sk_coef)
+final_dmg_A = buff_x + dmg_A
+final_dmg_B = buff_x + dmg_B
+final_ct_A = buff_x + wepA_ct
+final_ct_B = buff_x + wepB_ct
+damage_A = compute_z(final_dmg_A, final_ct_A, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)
+damage_B = compute_z(final_dmg_B, final_ct_B, atk_origin, E_def, total_def_B, Weak_coef, sk_coef)
 
 diff = damage_B - damage_A
 efficiency = (damage_B / damage_A - 1) * 100 if damage_A != 0 else 0
@@ -97,8 +102,8 @@ else:
 
 # 📈 그래프: 데미지 곡선 + 효율(%) 곡선
 atk_range = np.linspace(100, 5000, 200)
-damage_curve_A = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)]
-damage_curve_B = [compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)]
+damage_curve_A = [compute_z(final_dmg_A, final_ct_A, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)]
+damage_curve_B = [compute_z(final_dmg_B, final_ct_B, atk_origin, E_def, total_def_B, Weak_coef, sk_coef)]
 efficiency_curve = [(b/a - 1) * 100 if a != 0 else 0 for a, b in zip(damage_curve_A, damage_curve_B)]
 
 fig, ax1 = plt.subplots(figsize=(9,6))
