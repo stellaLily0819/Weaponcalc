@@ -78,8 +78,8 @@ with col2:
 dmg_B = dmg_B_input
 
 # 결과 계산
-damage_A = compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_A)
-damage_B = compute_z(buff_x + dmg_B, buff_y + wepB_ct, atk_origin, E_def, total_def_B, Weak_coef, sk_B)
+damage_A = compute_z(buff_x + dmg_A, buff_y + wepB_ct, atk_origin, E_def, total_def_A, Weak_coef, sk_coef)
+damage_B = compute_z(buff_x + dmg_B, buff_y + wepB_ct, atk_origin, E_def, total_def_B, Weak_coef, sk_coef)
 
 diff = damage_B - damage_A
 efficiency = (damage_B / damage_A - 1) * 100 if damage_A != 0 else 0
