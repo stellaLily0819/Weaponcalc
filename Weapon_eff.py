@@ -24,10 +24,6 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, max_value=50
 
 # 직군
 st.subheader("인형 포지션")
-Doll_sen = 0.0
-Doll_van = 0.0
-Doll_sup = 0.0
-Doll_bul = 0.0
 choice_doll = st.radio(
     "무기 옵션",
     options=["센티널", "뱅가드", "서포트", "불워크"],
@@ -39,7 +35,7 @@ if choice_doll == "센티널":
     ct_per = 0.0
 elif choice_doll == "뱅가드":
     atk_per = 17.0
-    ct_per = 0.0
+    ct_per = 10.0
 elif choice_doll == "서포트":
     atk_per = 17.0
     ct_per = 0.0
