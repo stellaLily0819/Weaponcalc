@@ -120,8 +120,8 @@ ax1.grid(True)
 
 # 효율 곡선 (오른쪽 y축)
 ax2 = ax1.twinx()
-ax2.plot(atk_range, efficiency_curve, label="효율 (B vs A, %)", color="green", linestyle="--")
-ax2.set_ylabel("효율 (%)")
+ax2.plot(atk_range, efficiency_curve, label="Efficiency (B vs A, %)", color="green", linestyle="--")
+ax2.set_ylabel("Efficiency (%)")
 ax2.axhline(0, color="black", linestyle=":")
 ax2.legend(loc="upper right")
 
