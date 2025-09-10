@@ -13,19 +13,44 @@ st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
 E_def = st.sidebar.number_input("적 방어력", min_value=0.0, value=5000.0, max_value=20000.0, step=100.0, format="%.0f")
-atk_origin = st.sidebar.number_input("기초 공격력", min_value=2000.0, max_value=5000.0, value=3500.0, step=10.0, format="%.0f")
+atk_origin = st.sidebar.number_input("기초 공격력 (공격 보너스 제외)", min_value=500.0, max_value=3000.0, value=1000.0, step=10.0, format="%.0f")
+atk_bonus = st.sidebar.number_input("기초 공격 보너스(%)", min_value=0.0, max_value=200.0, value=, step=10.0, format="%.0f")
 def_coef = st.sidebar.number_input("방어 무시(%)", min_value=0.0, max_value=100.0, value=30.0, step=10.0, format="%.0f")
 Weak_coef = st.sidebar.number_input("약점 (개)", min_value=0.0, max_value=2.0, value=0.0, step=1.0, format="%.0f")
 sk_coef = st.sidebar.number_input("스킬 계수(%)", min_value=0.0, max_value=1500.0, value=100.0, step=10.0, format="%.0f")
 buff_x = st.sidebar.number_input("피해 증가(%)", min_value=0.0, max_value=800.0, value=0.0, step=10.0, format="%.0f")
 buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, max_value=500.0, value=120.0, step=10.0, format="%.0f")
 
+# 직군
+st.subheader("인형 포지션")
+Doll_sen = 0.0
+Doll_van = 0.0
+Doll_sup = 0.0
+Doll_bul = 0.0
+choice_doll = st.radio(
+    "무기 옵션",
+    options=["센티널", "뱅가드", "서포트", "불워크"],
+    horizontal=True,
+    key="Doll_option"
+)
+if choice_doll == "센티널":
+    atk_per = 22.0
+    ct_per = 0.0
+elif choice_doll == "뱅가드":
+    atk_per = 17.0
+    ct_per = 0.0
+elif choice_doll == "서포트":
+    atk_per = 17.0
+    ct_per = 0.0
+elif choice_doll == "불워크":
+    atk_per = 0.0
+    ct_per = 0.0
 
 # 무기 A
 st.subheader("무기 A")
 
-wepA_ak = 0
-wepA_ct = 0
+wepA_ak = 0.0
+wepA_ct = 0.0
 choice_A = st.radio(
     "무기 옵션",
     options=["공격 보너스 15%", "치명타 피해 25%"],
@@ -33,12 +58,12 @@ choice_A = st.radio(
     key="weaponA_option"
 )
 if choice_A == "공격 보너스 15%":
-    wepA_ak = 15
+    wepA_ak = 15.0
 elif choice_A == "치명타 피해 25%":
-    wepA_ct = 25
+    wepA_ct = 25.0
 
 def_A = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f", key="def_ignore_A")
-total_def_A = min(def_A + def_coef, 100)
+total_def_A = min(def_A + def_coef, 100.0)
 
 col1, col2 = st.columns([2, 1])
 with col1:
@@ -53,8 +78,8 @@ dmg_A = dmg_A_input
 # 무기 B
 st.subheader("무기 B")
 
-wepB_ak = 0
-wepB_ct = 0
+wepB_ak = 0.0
+wepB_ct = 0.0
 choice_B = st.radio(
     "무기 옵션",
     options=["공격 보너스 15%", "치명타 피해 25%"],
@@ -62,12 +87,12 @@ choice_B = st.radio(
     key="weaponB_option"
 )
 if choice_B == "공격 보너스 15%":
-    wepB_ak = 15
+    wepB_ak = 15.0
 elif choice_B == "치명타 피해 25%":
-    wepB_ct = 25
+    wepB_ct = 25.0
 
 def_B = st.number_input("방어 무시(%)", min_value=0.0, max_value=20.0, value=0.0, step=10.0, format="%.0f", key="def_ignore_B")
-total_def_B = min(def_B + def_coef, 100)
+total_def_B = min(def_B + def_coef, 100.0)
 
 col1, col2 = st.columns([2, 1])
 with col1:
