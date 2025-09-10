@@ -13,7 +13,7 @@ st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
 E_def = st.sidebar.number_input("적 방어력", min_value=0.0, value=5000.0, step=100.0, format="%.0f")
-atk_origin = st.sidebar.number_input("기본 공격력", min_value=2000, max_value=5000.0, value=3500, step=10.0, format="%.0f")
+atk_origin = st.sidebar.number_input("기본 공격력", min_value=2000.0, max_value=5000.0, value=3500.0, step=10.0, format="%.0f")
 def_coef = st.sidebar.number_input("방어 무시(%)", min_value=0.0, max_value=100.0, value=30.0, step=10.0, format="%.0f")
 Weak_coef = st.sidebar.number_input("약점 (개)", min_value=0.0, max_value=2.0, value=0.0, step=1.0, format="%.0f")
 sk_coef = st.sidebar.number_input("스킬 계수(%)", min_value=0.0, value=100.0, step=10.0, format="%.0f")
