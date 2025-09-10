@@ -30,17 +30,17 @@ if "A_ct" not in st.session_state:
     
 col1, col2 = st.columns(2)
 with col1:
-    new_A = st.toggle("공격 보너스 15%", value=st.session_state.A_ak, key="A_ak_togg")
+    new_A = st.toggle("공격 보너스 15%", value=st.session_state.A_ak, key="A_ak")
     if new_A and st.session_state.A_ct:  # 무기 B가 켜져 있으면 끔
         st.session_state.A_ct = False
     st.session_state.A_ak = new_A
 with col2:
-    new_B = st.toggle("치명타 피해 25%", value=st.session_state.A_ct, key="A_ct_togg")
+    new_B = st.toggle("치명타 피해 25%", value=st.session_state.A_ct, key="A_ct")
     if new_B and st.session_state.A_ak:  # 무기 A가 켜져 있으면 끔
         st.session_state.A_ak = False
     st.session_state.A_ct = new_B
-wep_ak = 15 if st.session_state.active == "A" else 0
-wep_ct = 25 if st.session_state.active == "B" else 0
+wep_ak = 15 if st.session_state.A_ak else 0
+wep_ct = 25 if st.session_state.A_ct else 0
     
 col1, col2 = st.columns([2, 1])
 with col1:
