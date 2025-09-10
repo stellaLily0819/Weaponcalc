@@ -23,16 +23,22 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-if "active" not in st.session_state:
-    st.session_state.active = None
+if "A_ak" not in st.session_state:
+    st.session_state.A_ak = False
+if "A_ct" not in st.session_state:
+    st.session_state.A_ct = False
     
 col1, col2 = st.columns(2)
 with col1:
-    if st.toggle("공격 보너스 15%", key="wep_ak", value=st.session_state.active == "A"):
-        st.session_state.active = "A"
+    new_A = st.toggle("공격 보너스 15%", value=st.session_state.A_ak, key="A_ak")
+    if new_A and st.session_state.A_ct:  # 무기 B가 켜져 있으면 끔
+        st.session_state.A_ct = False
+    st.session_state.A_ak = new_A
 with col2:
-    if st.toggle("치명타 피해 25%", key="wep_ct", value=st.session_state.active == "B"):
-        st.session_state.active = "B"
+    new_B = st.toggle("치명타 피해 25%", value=st.session_state.A_ct, key="A_ct")
+    if new_B and st.session_state.A_ak:  # 무기 A가 켜져 있으면 끔
+        st.session_state.A_ak = False
+    st.session_state.A_ct = new_B
 wep_ak = 15 if st.session_state.active == "A" else 0
 wep_ct = 25 if st.session_state.active == "B" else 0
     
