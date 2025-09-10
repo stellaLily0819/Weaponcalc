@@ -13,7 +13,7 @@ st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
 E_def = st.sidebar.number_input("적 방어력", min_value=0.0, value=5000.0, max_value=20000.0, step=100.0, format="%.0f")
-atk_origin = st.sidebar.number_input("기초 공격력 (공격 보너스 제외)", min_value=500.0, max_value=3000.0, value=1000.0, step=10.0, format="%.0f")
+atk_origin = st.sidebar.number_input("기초 공격력 (공격 보너스 제외)", min_value=500.0, max_value=3000.0, value=1000.0, step=1.0, format="%.0f")
 atk_bonus = st.sidebar.number_input("기초 공격 보너스(%) (수정 X)", min_value=0.0, max_value=200.0, value=65.6, step=10.0, format="%.1f")
 def_coef = st.sidebar.number_input("방어 무시(%)", min_value=0.0, max_value=100.0, value=30.0, step=10.0, format="%.0f")
 Weak_coef = st.sidebar.number_input("약점 (개)", min_value=0.0, max_value=2.0, value=0.0, step=1.0, format="%.0f")
@@ -35,15 +35,19 @@ choice_doll = st.radio(
 )
 if choice_doll == "센티널":
     atk_per = 22.0
+    atk_val = 207.0
     ct_per = 0.0
 elif choice_doll == "뱅가드":
     atk_per = 17.0
+    atk_val = 186.0
     ct_per = 0.0
 elif choice_doll == "서포트":
     atk_per = 17.0
+    atk_val = 186.0
     ct_per = 0.0
 elif choice_doll == "불워크":
     atk_per = 0.0
+    atk_val = 170.0
     ct_per = 0.0
 
 # 무기 A
@@ -80,7 +84,7 @@ with col2:
     
 dmg_A = dmg_A_input
 
-st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
+st.write(f"관리실 공격력: {(atk_origin+atk_val+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
 
 
 
@@ -118,7 +122,7 @@ with col2:
     
 dmg_B = dmg_B_input
 
-st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
+st.write(f"관리실 공격력: {(atk_origin+atk_val+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
 
 
 # 결과 계산
