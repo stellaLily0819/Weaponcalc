@@ -109,15 +109,12 @@ damage_curve_B = [
 efficiency_curve = [(b/a - 1) * 100 if a != 0 else 0 for a, b in zip(damage_curve_A, damage_curve_B)]
 
 fig, ax1 = plt.subplots(figsize=(9,6))
-st.write(f"atk_range 길이: {len(atk_range)}")
-st.write(f"damage_curve_A 길이: {len(damage_curve_A)}")
-st.write(f"damage_curve_B 길이: {len(damage_curve_B)}")
 
 # 데미지 곡선 (왼쪽 y축)
-ax1.plot(atk_range, damage_curve_A, label="무기 A 데미지", color="blue")
-ax1.plot(atk_range, damage_curve_B, label="무기 B 데미지", color="red")
-ax1.set_xlabel("공격력 (ATK)")
-ax1.set_ylabel("최종 데미지")
+ax1.plot(atk_range, damage_curve_A, label="Weapon A", color="blue")
+ax1.plot(atk_range, damage_curve_B, label="Weapon B", color="red")
+ax1.set_xlabel("ATK")
+ax1.set_ylabel("Final Damage")
 ax1.legend(loc="upper left")
 ax1.grid(True)
 
