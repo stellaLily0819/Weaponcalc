@@ -23,13 +23,12 @@ buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0,
 # 무기 A
 st.subheader("무기 A")
 
-col1, col2, col3 = st.columns(3)
-with col1:
-    preset1 = st.toggle("Preset ① (1000)", key="preset1")
-with col2:
-    preset2 = st.toggle("Preset ② (2000)", key="preset2")
-with col3:
-    preset3 = st.toggle("Preset ③ (3000)", key="preset3")
+atk_choice = st.radio(
+    "무기 옵션",
+    options=[1000, 2000, 3000],
+    format_func=lambda x: f"Preset ({x})",
+    horizontal=True  # 가로 배치
+)
     
 col1, col2 = st.columns([2, 1])
 with col1:
