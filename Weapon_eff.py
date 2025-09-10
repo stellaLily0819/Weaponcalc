@@ -8,15 +8,17 @@ def compute_z(buff_x, buff_y, atk, E_def, def_coef, Weak_coef, sk_coef):
     denomi = atk + E_def * (1 - def_coef * 0.01)
     return (numer / denomi) * (1 + buff_x * 0.01) * Weak_coef * (sk_coef * 0.01) * (buff_y * 0.01)
 
-st.title("⚔️ 무기 효율 계산기 (데미지 + 효율 그래프)")
+st.title("무기 효율 계산기 (데미지 + 효율 그래프)")
 
 # 공통 변수
 st.sidebar.header("공통 변수 설정")
-E_def = st.sidebar.number_input("적 방어력 (E_def)", min_value=0.0, value=100.0)
-def_coef = st.sidebar.number_input("방어 무시율 (%)", min_value=0.0, max_value=100.0, value=20.0)
-Weak_coef = st.sidebar.number_input("속성 상성 계수", min_value=0.1, value=1.0)
-buff_x = st.sidebar.number_input("버프 X (%)", min_value=0.0, value=20.0)
-buff_y = st.sidebar.number_input("버프 Y (%)", min_value=0.0, value=50.0)
+E_def = st.sidebar.number_input("적 방어력", min_value=0.0, value=5000.0)
+def_coef = st.sidebar.number_input("방어 무시(%)", min_value=0.0, max_value=100.0, value=30.0)
+Weak_coef = st.sidebar.number_input("약점 계수", min_value=1.0, max_value=1.2, value=1.0)
+sk_coef = st.sidebar.number_input("스킬 계수(%)", min_value=0.0, value=100.0)
+buff_x = st.sidebar.number_input("피해 증가(%)", min_value=0.0, value=0.0)
+buff_y = st.sidebar.number_input("치명 피해(%)", min_value=0.0, value=120.0)
+
 
 # 무기 A
 st.subheader("무기 A 입력")
