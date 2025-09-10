@@ -144,7 +144,7 @@ else:
     st.info("무기 A와 B의 최종 데미지가 동일합니다.")
 
 
-st.sidebar.markdown("피증 변화만을 고려한 데미지 변화 (세로선 - 무기 포함 최종 데미지)")
+st.write("피증 변화만을 고려한 데미지 변화 (세로선 - 무기 포함 최종 데미지)")
 # 그래프: 데미지 곡선 + 효율(%) 곡선
 atk_range = np.linspace(0, 8000, 200)
 damage_curve_A = [
