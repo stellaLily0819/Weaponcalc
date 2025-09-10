@@ -46,10 +46,15 @@ elif choice_doll == "불워크":
     atk_per = 0.0
     ct_per = 0.0
 
-st.write(f"관리실 공격력: {atk_origin*(atk_bonus+atk_per)*0.01:.0f}")
-
 # 무기 A
 st.subheader("무기 A")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    wep_atk_A_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=10.0, format="%.0f", key="wep_atk_A")
+with col2:
+    wep_atk_A_input = st.number_input("직접 입력 (적용 값)", min_value=200.0, max_value=390.0, value=wep_atk_A_slider, step=1.0, format="%.0f", key="wep_atk_A_w")
+wep_atk_A = wep_atk_A_input
 
 wepA_ak = 0.0
 wepA_ct = 0.0
@@ -69,16 +74,25 @@ total_def_A = min(def_A + def_coef, 100.0)
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    dmg_A_slider = st.slider("피증 계수 (합산)", 0.0, 600.0, 10.0, step=10.0, format="%.0f", key="dmg_buff_A")
+    dmg_A_slider = st.slider("피증 계수 (합산)", 0.0, 100.0, 10.0, step=10.0, format="%.0f", key="dmg_buff_A")
 with col2:
     dmg_A_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_A_slider, step=10.0, format="%.0f", key="dmg_buff_A_w")
     
 dmg_A = dmg_A_input
 
+st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
+
 
 
 # 무기 B
 st.subheader("무기 B")
+
+col1, col2 = st.columns([2, 1])
+with col1:
+    wep_atk_B_slider = st.slider("무기 공격력", 200.0, 390.0, 390.0, step=10.0, format="%.0f", key="wep_atk_B")
+with col2:
+    wep_atk_B_input = st.number_input("직접 입력 (적용 값)", min_value=200.0, max_value=390.0, value=wep_atk_B_slider, step=1.0, format="%.0f", key="wep_atk_B_w")
+wep_atk_B = wep_atk_B_input
 
 wepB_ak = 0.0
 wepB_ct = 0.0
@@ -98,11 +112,13 @@ total_def_B = min(def_B + def_coef, 100.0)
 
 col1, col2 = st.columns([2, 1])
 with col1:
-    dmg_B_slider = st.slider("피증 계수 (합산)", 0.0, 600.0, 10.0, step=10.0, format="%.0f", key="dmg_buff_B")
+    dmg_B_slider = st.slider("피증 계수 (합산)", 0.0, 100.0, 10.0, step=10.0, format="%.0f", key="dmg_buff_B")
 with col2:
     dmg_B_input = st.number_input("직접 입력 (적용 값)", min_value=0.0, max_value=600.0, value=dmg_B_slider, step=10.0, format="%.0f", key="dmg_buff_B_w")
     
 dmg_B = dmg_B_input
+
+st.write(f"관리실 공격력: {(atk_origin+wep_atk_A)*(atk_bonus+atk_per+wepA_ak)*0.01:.0f}")
 
 
 # 결과 계산
